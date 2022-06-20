@@ -1,0 +1,25 @@
+{
+    "name": "@lifejs/lifejs",
+    "version": "1.0.0",
+    "description": "",
+    "exports": {
+        "node": {
+            "import": "./dist/mjs/index.mjs",
+            "require": "./dist/cjs/index.cjs"
+        },
+        "default": "./dist/mjs/index.mjs"
+    },
+    "type": "module",
+    "main": "./dist/cjs/index.cjs",
+    "module": "./dist/mjs/index.mjs",
+    "scripts": {
+        "rollup": "rollup -c",
+        "watch": "rollup -c -w"
+    },
+    "keywords": [],
+    "author": "TheCommieAxolotl",
+    "license": "MIT",
+    "devDependencies": {
+        "rollup": "^2.75.7"
+    }
+}
