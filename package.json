@@ -33,6 +33,7 @@
     "author": "TheCommieAxolotl",
     "license": "MIT",
     "devDependencies": {
-        "rollup": "^2.75.7"
+        "rollup": "^2.75.7",
+        "rollup-plugin-terser": "^7.0.2"
     }
 }
