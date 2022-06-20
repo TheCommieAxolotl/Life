@@ -139,8 +139,8 @@ const Life$1 = {
         return child;
     }
 }class Fish {
-    constructor(health, age) {
-        this.name = "Fish";
+    constructor(name, health, age) {
+        this.name = name || "Fish";
         this.health = health || 100;
         this.age = age || 0;
     }
@@ -153,6 +153,16 @@ const Life$1 = {
         this.alive = true;
         Life$1.Animals.push(this);
         console.log(`${this.name} is born!`);
+    }
+
+    /**
+     * @name die
+     * @description Makes a Fish die
+     */
+    die() {
+        if (!this.alive) throw new Error("This Fish is not alive!");
+        this.alive = false;
+        console.log(`${this.name} died!`);
     }
 
     /**
@@ -178,6 +188,16 @@ const Life$1 = {
         this.alive = true;
         Life.Animals.push(this);
         console.log(`${this.name} is born!`);
+    }
+
+    /**
+     * @name die
+     * @description Makes a Bird die
+     */
+    die() {
+        if (!this.alive) throw new Error("This Bird is not alive!");
+        this.alive = false;
+        console.log(`${this.name} died!`);
     }
 
     /**
