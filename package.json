@@ -16,7 +16,20 @@
         "rollup": "rollup -c",
         "watch": "rollup -c -w"
     },
-    "keywords": [],
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/TheCommieAxolotl/Life.git"
+    },
+    "bugs": {
+        "url": "https://github.com/TheCommieAxolotl/Life/issues"
+    },
+    "homepage": "https://github.com/TheCommieAxolotl/Life#readme",
+    "keywords": [
+        "lifejs",
+        "life",
+        "human",
+        "life-like"
+    ],
     "author": "TheCommieAxolotl",
     "license": "MIT",
     "devDependencies": {
