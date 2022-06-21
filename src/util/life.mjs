@@ -1,3 +1,7 @@
+function escapeId(id) {
+    return id.replace(/[^a-zA-Z0-9_]/g, "_");
+}
+
 export const Life = {
     /**
      * @name Animals
@@ -20,7 +24,7 @@ export const Life = {
         get version() {
             return "1.0.1";
         }
-        plugins = [];
+        plugins = {};
 
         /**
          * @name registerPlugin
@@ -30,8 +34,18 @@ export const Life = {
         registerPlugin(plugin) {
             const instance = new plugin();
 
-            this.plugins.push(instance);
+            if (this.plugins?.hasOwnProperty(escapeId(instance.name))) {
+                throw new Error(`Plugin "${instance.name}" already registered`);
+            }
+
+            this.plugins = { ...this.plugins, [escapeId(instance.name)]: instance };
             instance.initialise();
         }
+
+        Plugin = class {
+            name = "LifeJSPlugin";
+            initialise() {}
+            destroy() {}
+        };
     })(),
 };
