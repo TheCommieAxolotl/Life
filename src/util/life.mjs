@@ -28,8 +28,10 @@ export const Life = {
          * @param {LifePlugin} plugin - lifejs plugin exported Object
          */
         registerPlugin(plugin) {
-            this.plugins.push(plugin);
-            plugin.initilise();
+            const instance = new plugin();
+
+            this.plugins.push(instance);
+            instance.initialise();
         }
     })(),
 };
