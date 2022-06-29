@@ -59,28 +59,25 @@ export default class Human {
     /**
      * @name reproduce
      * @description Makes a Human reproduce
-     * @param {Human} human
+     * @param {Human} otherHuman
      * @param {string} [name]
      * @returns
      */
-    reproduce(human, name) {
-        if (human === this) throw new Error("You can't reproduce with yourself!");
+    reproduce(otherHuman, name) {
+        if (otherHuman === this) throw new Error("You can't reproduce with yourself!");
         if (!this.alive) throw new Error("This Human is not alive!");
-        if (!human.alive) throw new Error(`${this.name.split(" ")[0]} cannot reproduce with a Human who is not alive!`);
+        if (!otherHuman.alive) throw new Error(`${this.name.split(" ")[0]} cannot reproduce with a Human who is not alive!`);
 
-        if (this.age < 18) {
-            throw new Error(`${this.name.split(" ")[0]} is too young to reproduce!`);
-        }
-        if (human.age < 18) {
-            throw new Error(`${human.name.split(" ")[0]} is too young to reproduce!`);
+        if (this.age < 18 || otherHuman.age < 18) {
+            throw new Error(`One or more parties is too young to reproduce!`);
         }
 
         const child = new Human(null, null, null, `${name || Names.generateName(null, true)} ${this.name.split(" ")[1]}`);
 
         this.children = this.children?.push(child) || [child];
-        human.children = human.children?.push(child) || [child];
+        otherHuman.children = otherHuman.children?.push(child) || [child];
 
-        child.parents = [this, human];
+        child.parents = [this, otherHuman];
         child.birth();
 
         return child;

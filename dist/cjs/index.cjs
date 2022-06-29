@@ -60,10 +60,10 @@ constructor(a,e,i){this.health=e||100,this.age=0,this.sex=i||10*Math.random()>5?
 /**
      * @name reproduce
      * @description Makes a Human reproduce
-     * @param {Human} human
+     * @param {Human} otherHuman
      * @param {string} [name]
      * @returns
-     */reproduce(a,e){if(a===this)throw new Error("You can't reproduce with yourself!");if(!this.alive)throw new Error("This Human is not alive!");if(!a.alive)throw new Error(`${this.name.split(" ")[0]} cannot reproduce with a Human who is not alive!`);if(this.age<18)throw new Error(`${this.name.split(" ")[0]} is too young to reproduce!`);if(a.age<18)throw new Error(`${a.name.split(" ")[0]} is too young to reproduce!`);const r=new i(null,null,null,`${e||n.generateName(null,!0)} ${this.name.split(" ")[1]}`);return this.children=this.children?.push(r)||[r],a.children=a.children?.push(r)||[r],r.parents=[this,a],r.birth(),r}}exports.Bird=class{constructor(a,e){this.name="Bird",this.health=a||100,this.age=e||0}
+     */reproduce(a,e){if(a===this)throw new Error("You can't reproduce with yourself!");if(!this.alive)throw new Error("This Human is not alive!");if(!a.alive)throw new Error(`${this.name.split(" ")[0]} cannot reproduce with a Human who is not alive!`);if(this.age<18||a.age<18)throw new Error("One or more parties is too young to reproduce!");const r=new i(null,null,null,`${e||n.generateName(null,!0)} ${this.name.split(" ")[1]}`);return this.children=this.children?.push(r)||[r],a.children=a.children?.push(r)||[r],r.parents=[this,a],r.birth(),r}}exports.Bird=class{constructor(a,e){this.name="Bird",this.health=a||100,this.age=e||0}
 /**
      * @name birth
      * @description Makes a Bird be born
