@@ -1,4 +1,7 @@
 import { Life } from "../util/life.mjs";
+import Bird from "./Bird.mjs";
+import Fish from "./Fish.mjs";
+import Human from "./Human.mjs";
 
 export default class Bear {
     constructor(name, health, age) {
@@ -34,5 +37,16 @@ export default class Bear {
     ageUp() {
         if (!this.alive) throw new Error("This Bear is not alive!");
         this.age++;
+    }
+
+    /**
+     * @name maul
+     * @description Makes a Bear maul another Animal
+     * @param {Human|Fish|Bear|Bird} entity
+     */
+    maul(entity) {
+        if (!this.alive) throw new Error("This Bear is not alive!");
+        if (!entity.alive) throw new Error("This entity is not alive!");
+        entity.health -= 10;
     }
 }
